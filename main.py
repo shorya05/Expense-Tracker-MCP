@@ -70,6 +70,7 @@ def summarize(start_date, end_date, category=None):
         cur = c.execute(query, params)
         cols = [d[0] for d in cur.description]
         return [dict(zip(cols, r)) for r in cur.fetchall()]
+
 @mcp.tool()
 def delete_expense(expense_id: int):
     """Delete an expense entry by ID."""
@@ -83,6 +84,7 @@ def delete_expense(expense_id: int):
             return {"status": "error", "message": "Expense not found"}
 
         return {"status": "ok", "deleted_id": expense_id}
+
 
 @mcp.tool()
 def edit_expense(
@@ -137,3 +139,5 @@ def categories():
 
 if __name__ == "__main__":
     mcp.run()
+
+
